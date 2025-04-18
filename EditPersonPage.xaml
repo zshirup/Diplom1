@@ -1,0 +1,78 @@
+﻿<Page x:Class="PersonnelAccessSystem.Pages.EditPersonPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Редактирование Персоны"
+      Background="#F0F0F0">
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
+            <!-- Имя -->
+            <TextBox x:Name="FirstNameBox" Margin="0,0,0,10" Padding="5" Background="Transparent" />
+            <TextBlock Text="Имя" Foreground="Gray" IsHitTestVisible="False" Padding="5">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Visibility" Value="Visible"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=FirstNameBox}" Value="">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsFocused, ElementName=FirstNameBox}" Value="True">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <!-- Фамилия -->
+            <TextBox x:Name="LastNameBox" Margin="0,0,0,10" Padding="5" Background="Transparent" />
+            <TextBlock Text="Фамилия" Foreground="Gray" IsHitTestVisible="False" Padding="5">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Visibility" Value="Visible"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding Text, ElementName=LastNameBox}" Value="">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsFocused, ElementName=LastNameBox}" Value="True">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <!-- Дата рождения -->
+            <DatePicker x:Name="BirthDatePicker" Margin="0,0,0,10" />
+            <TextBlock Text="Дата рождения" Foreground="Gray" IsHitTestVisible="False" Padding="5">
+                <TextBlock.Style>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Visibility" Value="Visible"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding SelectedDate, ElementName=BirthDatePicker}" Value="{x:Null}">
+                                <Setter Property="Visibility" Value="Visible"/>
+                            </DataTrigger>
+                            <DataTrigger Binding="{Binding IsFocused, ElementName=BirthDatePicker}" Value="True">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBlock.Style>
+            </TextBlock>
+            <!-- Уровень доступа -->
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+                <TextBlock Text="Уровень доступа:" VerticalAlignment="Center" Margin="0,0,5,0" />
+                <ComboBox x:Name="AccessLevelComboBox" SelectedIndex="0" SelectionChanged="AccessLevelComboBox_SelectionChanged">
+                    <ComboBoxItem>Временный</ComboBoxItem>
+                    <ComboBoxItem>Постоянный</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <!-- Дата окончания (для временного пропуска) -->
+            <StackPanel x:Name="EndDatePanel" Visibility="Collapsed" Orientation="Horizontal" Margin="0,0,0,10">
+                <TextBlock Text="Дата окончания:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+                <DatePicker x:Name="EndDatePicker"/>
+            </StackPanel>
+            <!-- Кнопка сохранения изменений -->
+            <Button Content="Сохранить изменения" Click="SaveChanges_Click" Background="#0078D4" Foreground="White" Padding="10" Margin="0,0,0,10" />
+            <!-- Кнопка назад -->
+            <Button Content="Назад" Click="Back_Click" Background="#FF4500" Foreground="White" Padding="10" />
+        </StackPanel>
+    </Grid>
+</Page>

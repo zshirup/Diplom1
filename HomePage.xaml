@@ -1,0 +1,35 @@
+﻿<Page x:Class="PersonnelAccessSystem.Pages.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Главная">
+    <Grid>
+        <!-- Градиентный фон -->
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#0078D4" Offset="0.0"/>
+                <GradientStop Color="#00A8FF" Offset="1.0"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300">
+            <!-- Логотип -->
+            <Image Height="70" Source="/PocAtomLogo.png" Stretch="Fill" Width="268" Margin="0,0,0,20" />
+
+            <!-- Заголовок -->
+            <TextBlock Text="Главное меню" FontSize="24" FontWeight="Bold" Margin="0,0,0,20" TextAlignment="Center" Foreground="White"/>
+
+            <!-- Кнопки -->
+            <Button Content="Просмотр базы данных" Click="ViewDatabase_Click" Margin="0,0,0,10" Padding="10" Background="#FFFFFF" Foreground="#0078D4"/>
+            <Button Content="Добавить человека" Click="AddPerson_Click" Margin="0,0,0,10" Padding="10" Background="#FFFFFF" Foreground="#0078D4"/>
+            <Button Content="Просмотр журналов" Click="ViewLogs_Click" Margin="0,0,0,10" Padding="10" Background="#FFFFFF" Foreground="#0078D4"/>
+
+            <!-- Управление пользователями (видно только администраторам) -->
+            <Button x:Name="ManageUsersButton" Content="Управление пользователями" Click="ManageUsers_Click" Visibility="Collapsed" Padding="10" Background="#FFFFFF" Foreground="#0078D4"/>
+
+            <!-- Управление аккаунтами (видно только администраторам) -->
+            <Button x:Name="ManageAccountsButton" Content="Управление аккаунтами" Click="ManageAccounts_Click" Visibility="Collapsed" Padding="10" Background="#FFFFFF" Foreground="#0078D4"/>
+
+            <!-- Выйти -->
+            <Button Content="Выйти" Click="LogOut_Click" Background="#FF4500" Foreground="White" Padding="10" Margin="0,10,0,0"/>
+        </StackPanel>
+    </Grid>
+</Page>
